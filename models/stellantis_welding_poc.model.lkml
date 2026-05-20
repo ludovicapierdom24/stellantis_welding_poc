@@ -13,3 +13,12 @@ datagroup: stellantis_welding_poc_default_datagroup {
 }
 
 persist_with: stellantis_welding_poc_default_datagroup
+
+explore: summary_weldlog {
+  join: spot_sheet_details {
+    type: left_outer
+    sql_on: ${summary_weldlog.spot_name} = ${spot_sheet_details.spot_name} ;;
+    relationship: many_to_one
+}
+}
+
