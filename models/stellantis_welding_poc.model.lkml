@@ -13,4 +13,3 @@ datagroup: stellantis_welding_poc_default_datagroup {
 }
 
 persist_with: stellantis_welding_poc_default_datagroup
-
