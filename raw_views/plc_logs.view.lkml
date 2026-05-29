@@ -1,22 +1,3 @@
-# Un-hide and use this explore, or copy the joins into another explore, to get all the fully nested relationships from this view
-explore: plc_logs {
-  hidden: yes
-    join: plc_logs__message__weld_log__force_curve {
-      view_label: "Plc Logs: Message Weldlog Forcecurve"
-      sql: LEFT JOIN UNNEST(${plc_logs.message__weld_log__force_curve}) as plc_logs__message__weld_log__force_curve ;;
-      relationship: one_to_many
-    }
-    join: plc_logs__message__weld_log__voltage_curve {
-      view_label: "Plc Logs: Message Weldlog Voltagecurve"
-      sql: LEFT JOIN UNNEST(${plc_logs.message__weld_log__voltage_curve}) as plc_logs__message__weld_log__voltage_curve ;;
-      relationship: one_to_many
-    }
-    join: plc_logs__message__weld_log__current_curve {
-      view_label: "Plc Logs: Message Weldlog Currentcurve"
-      sql: LEFT JOIN UNNEST(${plc_logs.message__weld_log__current_curve}) as plc_logs__message__weld_log__current_curve ;;
-      relationship: one_to_many
-    }
-}
 view: plc_logs {
   sql_table_name: `stellantis-molding-anomaly-det.molding_anomaly_poc.plc_logs` ;;
 
@@ -835,6 +816,7 @@ view: plc_logs {
     sql: ${TABLE}.Name ;;
   }
   dimension: original_filename {
+    primary_key: yes
     type: string
     sql: ${TABLE}.original_filename ;;
   }
