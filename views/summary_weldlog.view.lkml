@@ -283,23 +283,23 @@ view: +summary_weldlog {
 
   measure: total_welds {
     type: count_distinct
-    label: "Totale Saldature Analizzate"
-    description: "Conteggio totale delle saldature."
+    label: "Total Analyzed Welds"
+    description: "Total count of welds."
     sql: ${filename} ;;
   }
 
   measure: count_ko {
     type: count_distinct
-    label: "Saldature KO (Difetti)"
-    description: "Numero di saldature con esito Ultrasuoni = KO."
+    label: "KO Welds (Defects)"
+    description: "Number of welds with Ultrasound result = KO."
     filters: [ultrasound: "KO"]
     sql: ${filename} ;;
   }
 
   measure: count_good {
     type: count_distinct
-    label: "Saldature Good"
-    description: "Numero di saldature con esito Ultrasuoni = Good."
+    label: "Good Welds"
+    description: "Number of welds with Ultrasound result = Good."
     filters: [ultrasound: "Good"]
     sql: ${filename} ;;
   }
@@ -307,18 +307,18 @@ view: +summary_weldlog {
   measure: defect_rate {
     type: number
     label: "Defect Rate %"
-    description: "Percentuale di saldature difettose (KO) sul totale."
+    description: "Percentage of defective welds (KO) out of the total."
     value_format_name: percent_2
-    # Moltiplico per 1.0 per forzare la divisione decimale ed evito l'errore div/0 con NULLIF
+    # Multiply by 1.0 to force decimal division and avoid div/0 error with NULLIF
     sql: 1.0 * ${count_ko} / NULLIF(${total_welds}, 0) ;;
   }
 
-  # NOTA: Se hai a disposizione anche il punteggio dell'Isolation Forest, puoi scommentare questa metrica.
-  # Sostituisci 'anomaly_score' con il nome reale della dimensione se diverso.
+  # NOTE: If you also have the Isolation Forest score available, you can uncomment this metric.
+  # Replace 'anomaly_score' with the real dimension name if different.
   # measure: average_anomaly_score {
   #   type: average
-  #   label: "Anomaly Score Medio"
-  #   description: "Punteggio medio assegnato dall'Isolation Forest."
+  #   label: "Average Anomaly Score"
+  #   description: "Average score assigned by the Isolation Forest."
   #   sql: ${anomaly_score} ;;
   #   value_format_name: decimal_2
   # }
@@ -327,24 +327,24 @@ view: +summary_weldlog {
   dimension: anomaly_score {
     type: number
     label: "Anomaly Score"
-    description: "Mockup basato sull'esito Ultrasound: Score negativo per i KO, positivo per i Good."
+    description: "Mockup based on Ultrasound result: Negative score for KO, positive for Good."
     value_format_name: decimal_2
     sql:
       CASE
-        /* Se è un difetto reale, l'AI lo intercetta (Score tra -1.0 e -0.2) */
+        /* If it is a real defect, the AI intercepts it (Score between -1.0 and -0.2) */
         WHEN ${TABLE}.Ultrasound = 'KO' THEN (RAND() * 0.8) - 1.0
 
-        /* Se è sano, l'AI lo valuta normale (Score tra 0.0 e 1.0) */
+        /* If it is healthy, the AI evaluates it normal (Score between 0.0 and 1.0) */
         ELSE RAND()
       END ;;
   }
 
   measure: count_ai_anomalies {
     type: count
-    label: "Anomalie Rilevate (IF)"
-    description: "Numero di saldature classificate come anomale dal modello AI (Anomaly Score < 0)."
+    label: "Detected Anomalies (IF)"
+    description: "Number of welds classified as anomalous by the AI model (Anomaly Score < 0)."
 
-    # Questo filtro conta solo le righe dove il punteggio è negativo
+    # This filter only counts rows where the score is negative
     filters: [anomaly_score: "< 0"]
   }
 

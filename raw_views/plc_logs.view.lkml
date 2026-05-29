@@ -9,6 +9,7 @@ view: plc_logs {
   }
   dimension: message__weld_log__current_actual_value {
     type: number
+    description: "Current actual value of the weld in kA"
     sql: ${TABLE}.Message.WeldLog.currentActualValue ;;
     group_label: "Message Weld Log"
     group_item_label: "Current Actual Value"
