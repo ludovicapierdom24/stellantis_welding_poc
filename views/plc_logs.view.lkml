@@ -59,6 +59,35 @@ view: +plc_logs {
   }
 
   # ==========================================
+  # MEASURES: REWELD LOGIC
+  # ==========================================
+  # Hidden helper dimension to determine if there was an expulsion
+  dimension: is_reweld {
+    type: yesno
+    hidden: yes
+    description: "Hidden helper dimension to determine if there was rewelded"
+    sql: ${message__weld_log__reweld_active} =1 ;;
+  }
+
+
+  measure: count_rewelding {
+    type: count
+    label: "Number of Rewelding"
+    group_label: "Process Metrics"
+    description: "Count of welds with rewelding."
+    filters: [is_reweld: "yes"]
+  }
+
+  measure: reweld_rate {
+    type: number
+    label: "Reweld Rate %"
+    group_label: "Process Metrics"
+    value_format_name: percent_2
+    sql: 1.0 * ${count_rewelding} / NULLIF(${count}, 0) ;;
+  }
+
+
+  # ==========================================
   # MEASURES: EQUIPMENT HEALTH (WEAR)
   # ==========================================
 

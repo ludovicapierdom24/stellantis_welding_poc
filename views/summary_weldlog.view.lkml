@@ -349,6 +349,43 @@ view: +summary_weldlog {
   }
 
 
+  # ==========================================
+  # 3. MISURE (Sostituisce n_g = ... e n_k = ...)
+  # ==========================================
+
+
+  measure: total_labeled_curves {
+    type: number
+    description: "Totale curve etichettate (Good + KO) per questa tipologia"
+    sql: ${count_good} + ${count_ko} ;;
+  }
+
+  # ==========================================
+  # 4. LOGICA DI BUSINESS (Sostituisce il blocco if/else Python)
+  # ==========================================
+
+  measure: is_analysis_feasible {
+    type: string
+    description: "Restituisce 'Sì' se ci sono abbastanza campioni, altrimenti 'No'"
+    # Usa LEAST di SQL invece di min() di Python. Usa il parametro inietatto dinamicamente.
+    sql: CASE
+          WHEN LEAST(${count_good}, ${count_ko}) >= ({% parameter spot_sheet_details.min_labeled_curves %} / 2)
+           AND (${total_labeled_curves}) >= {% parameter spot_sheet_details.min_labeled_curves %}
+          THEN 'Sì'
+          ELSE 'No (campione insufficiente)'
+         END ;;
+  }
+
+  # Misura booleana nascosta: equivalente al "if ... continue" nel tuo ciclo for dei grafici
+  measure: is_feasible_boolean {
+    type: yesno
+    hidden: no
+    description: "Vero se la tipologia ha superato i requisiti minimi di campionamento"
+    sql: LEAST(${count_good}, ${count_ko}) >= ({% parameter spot_sheet_details.min_labeled_curves %} / 2)
+      AND (${total_labeled_curves}) >= {% parameter spot_sheet_details.min_labeled_curves %} ;;
+  }
+
+
 
 
 
