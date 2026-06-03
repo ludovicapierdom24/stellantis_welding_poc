@@ -1,7 +1,16 @@
 include: "/raw_views/plc_logs.view"
 view: +plc_logs {
 
-
+dimension: shift {
+    type: string
+    label: "Working Shift"
+    description: "Shift classification based on the welding time."
+    sql: CASE 
+           WHEN EXTRACT(HOUR FROM ${message__weld_log__date_raw}) >= 6 AND EXTRACT(HOUR FROM ${message__weld_log__date_raw}) < 14 THEN '1 - Morning (06-14)'
+           WHEN EXTRACT(HOUR FROM ${message__weld_log__date_raw}) >= 14 AND EXTRACT(HOUR FROM ${message__weld_log__date_raw}) < 22 THEN '2 - Afternoon (14-22)'
+           ELSE '3 - Night (22-06)'
+         END ;;
+  }
 
 # ==========================================
   # MEASURES: ELECTRICAL & PROCESS METRICS
