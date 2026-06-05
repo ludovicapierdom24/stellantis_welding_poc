@@ -39,20 +39,26 @@ explore: welding_anomaly_poc {
 
   join: plc_logs__message__weld_log__force_curve {
     view_label: "Curve: Force"
-    sql: LEFT JOIN UNNEST(${plc_logs.message__weld_log__force_curve}) as plc_logs__message__weld_log__force_curve ;;
+    sql: LEFT JOIN UNNEST(${plc_logs.message__weld_log__force_curve}) as plc_logs__message__weld_log__force_curve WITH OFFSET AS array_index;;
     relationship: one_to_many
   }
 
   join: plc_logs__message__weld_log__voltage_curve {
     view_label: "Curve: Voltage"
-    sql: LEFT JOIN UNNEST(${plc_logs.message__weld_log__voltage_curve}) as plc_logs__message__weld_log__voltage_curve ;;
+    sql: LEFT JOIN UNNEST(${plc_logs.message__weld_log__voltage_curve}) as plc_logs__message__weld_log__voltage_curve WITH OFFSET AS array_index ;;
     relationship: one_to_many
   }
 
   join: plc_logs__message__weld_log__current_curve {
     view_label: "Curve: Current"
-    sql: LEFT JOIN UNNEST(${plc_logs.message__weld_log__current_curve}) as plc_logs__message__weld_log__current_curve ;;
+    sql: LEFT JOIN UNNEST(${plc_logs.message__weld_log__current_curve}) as plc_logs__message__weld_log__current_curve WITH OFFSET AS array_index ;;
     relationship: one_to_many
+  }
+
+  join: madi_weld_summary {
+    type: full_outer
+    sql_on: cast(${plc_logs.message__weld_log__prot_record_id} as string)=${madi_weld_summary.prot_record_id} ;;
+    relationship: one_to_one
   }
 
 

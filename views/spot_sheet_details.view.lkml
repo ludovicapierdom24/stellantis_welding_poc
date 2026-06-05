@@ -63,7 +63,7 @@ view: +spot_sheet_details {
       group_label: "2. Sheet Configuration"
       label: "Total Thickness (mm)"
       description: "Total thickness (mm). NULL if not available (#N/A in Excel)."
-      sql: ${TABLE}.Tth ;;
+      sql: ROUND(${TABLE}.Tth,2);;
     }
 
     # ==========================================
@@ -79,25 +79,25 @@ view: +spot_sheet_details {
 
 
 # ==========================================
-  # 1. PARAMETRI (Sostituisce le costanti Python)
+  # 1. PARAMETERS (Replaces the Python constants)
   # ==========================================
 
   parameter: min_labeled_curves {
     type: number
-    description: "Equivalente alla variabile Python MIN_LABELED_CURVES. Permette all'utente di cambiare la soglia a runtime."
+    description: "Equivalent to the Python variable MIN_LABELED_CURVES. Allows the user to change the threshold at runtime."
     default_value: "30"
   }
 
   # ==========================================
-  # 2. DIMENSIONI (Sostituisce il ciclo for e typology_key)
+  # 2. DIMENSIONI (Replaces the for loop and typology_key)
   # ==========================================
 
 
   dimension: typology {
     type: string
-    description: "Stringa formattata: es. '3 lamiere · 4.8 mm'"
+    description: "Formatted string: ex. '3 sheets · 4.8 mm'"
     # In BigQuery SQL usiamo CAST e concatenazione per replicare l'f-string di Python
-    sql: CAST(${sheet} AS INT64) || ' lamiere · ' || CAST(${tth} AS STRING) || ' mm' ;;
+    sql: CAST(${sheet} AS INT64) || ' sheets · ' || CAST(${tth} AS STRING) || ' mm' ;;
   }
 
 

@@ -34,7 +34,7 @@ view: plc_logs {
   }
   dimension_group: message__weld_log__date {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, day_of_week, month, quarter, year]
     sql: ${TABLE}.Message.WeldLog.dateTime ;;
   }
   dimension: message__weld_log__decline_usp {
