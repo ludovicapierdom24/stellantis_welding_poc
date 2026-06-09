@@ -93,8 +93,10 @@ explore: stellantis_molding_anomaly_det
 {
   view_name: weld_training_features_3l48
   label: "Training Features"
+  description: "Explore for analyzing training features and MADI anomaly scores for the spot welding process."
 
   join: weld_training_scores_madi_3l48 {
+    view_label: "Training Scores"
     type: inner
     sql_on: cast(${weld_training_features_3l48.original_filename} as string)=${weld_training_scores_madi_3l48.original_filename} ;;
     relationship: one_to_one
