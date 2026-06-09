@@ -87,3 +87,16 @@ explore: welding_anomaly_poc {
   sql_always_where:  ${summary_weldlog.ultrasound} in ('Good', 'KO') and ${message__weld_log__spot_name} is not null and ${message__weld_log__weld_time_actual_value} !=0;;
 
 }
+
+
+explore: stellantis_molding_anomaly_det
+{
+  view_name: weld_training_features_3l48
+  label: "Training Features"
+
+  join: weld_training_scores_madi_3l48 {
+    type: inner
+    sql_on: cast(${weld_training_features_3l48.original_filename} as string)=${weld_training_scores_madi_3l48.original_filename} ;;
+    relationship: one_to_one
+  }
+}
