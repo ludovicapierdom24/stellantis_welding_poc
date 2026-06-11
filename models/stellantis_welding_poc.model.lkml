@@ -91,14 +91,33 @@ explore: welding_anomaly_poc {
 
 explore: stellantis_molding_anomaly_det
 {
-  view_name: weld_training_features_3l48
-  label: "Training Features"
-  description: "Explore for analyzing training features and MADI anomaly scores for the spot welding process."
+  view_name: weld_training_scores_madi_3l48
+  label: "Training Scores"
+    description: "Explore for analyzing training features and MADI anomaly scores for the spot welding process. It includes SHAP (SHapley Additive exPlanations) values that provide the feature contribution for each input variable to every anomaly score detection, enabling explainability of the MADI model predictions."
 
-  join: weld_training_scores_madi_3l48 {
-    view_label: "Training Scores"
+  join: weld_training_features_3l48 {
+    view_label: "Training Features"
     type: inner
     sql_on: cast(${weld_training_features_3l48.original_filename} as string)=${weld_training_scores_madi_3l48.original_filename} ;;
     relationship: one_to_one
+  }
+
+# ==========================================
+# MADI Explainability (SHAP values)
+# ==========================================
+join: weld_training_madi_shap_3l48 {
+view_label: "SHAP Explainability"
+
+type: inner
+sql_on: ${weld_training_scores_madi_3l48.original_filename} = ${weld_training_madi_shap_3l48.original_filename}
+AND ${weld_training_scores_madi_3l48.time_stamp_raw} = ${weld_training_madi_shap_3l48.time_stamp_raw} ;;
+relationship: one_to_many
+}
+
+# ==========================================
+# MADI KPI (top 5/10/15% lift table)
+# ==========================================
+join: v_madi_kpi_dominant_3l48 {
+view_label: "MADI KPI"
   }
 }
