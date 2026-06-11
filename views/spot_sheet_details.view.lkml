@@ -101,4 +101,82 @@ view: +spot_sheet_details {
   }
 
 
+
+  # ==========================================
+  # THICKNESS METRICS
+  # ==========================================
+
+  measure: avg_total_thickness {
+    type: average
+    label: "Avg Total Thickness (tth)"
+    description: "Average total stack thickness (sum of all sheets) across welding spots."
+    sql: ${tth} ;;
+    value_format_name: decimal_2
   }
+
+  measure: avg_th1 {
+    type: average
+    label: "Avg Sheet 1 Thickness"
+    description: "Average thickness of the first sheet (th1) in mm."
+    sql: ${th1} ;;
+    value_format_name: decimal_2
+  }
+
+  measure: avg_th2 {
+    type: average
+    label: "Avg Sheet 2 Thickness"
+    description: "Average thickness of the second sheet (th2) in mm."
+    sql: ${th2} ;;
+    value_format_name: decimal_2
+  }
+
+  measure: avg_th3 {
+    type: average
+    label: "Avg Sheet 3 Thickness"
+    description: "Average thickness of the third sheet (th3, when present) in mm."
+    sql: ${th3} ;;
+    value_format_name: decimal_2
+  }
+
+  measure: max_total_thickness {
+    type: max
+    label: "Max Total Thickness"
+    description: "Maximum total stack thickness observed across all welding spots."
+    sql: ${tth} ;;
+    value_format_name: decimal_2
+  }
+
+  measure: min_total_thickness {
+    type: min
+    label: "Min Total Thickness"
+    description: "Minimum total stack thickness observed across all welding spots."
+    sql: ${tth} ;;
+    value_format_name: decimal_2
+  }
+
+  # ==========================================
+  # SPOT COUNT METRICS
+  # ==========================================
+
+  measure: count_spots {
+    type: count_distinct
+    label: "# Distinct Weld Spots"
+    description: "Number of distinct welding spot identifiers in the selection."
+    sql: ${spot_name} ;;
+  }
+
+  measure: count_3_sheet_spots {
+    type: count
+    label: "# 3-Sheet Spots"
+    description: "Count of welding spots with a 3-sheet stack configuration."
+    filters: [sheet: "3"]
+  }
+
+  measure: count_2_sheet_spots {
+    type: count
+    label: "# 2-Sheet Spots"
+    description: "Count of welding spots with a 2-sheet stack configuration."
+    filters: [sheet: "2"]
+  }
+
+}
