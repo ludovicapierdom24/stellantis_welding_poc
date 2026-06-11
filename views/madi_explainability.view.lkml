@@ -65,7 +65,7 @@ view: +weld_training_madi_shap_3l48 {
     label: "Avg Feature SHAP Rank"
     description: "Average rank of the feature by absolute SHAP contribution (1 = most important) across all anomaly detections."
     sql: ${shap_rank} ;;
-    value_format_name: decimal_1
+    value_format_name: decimal_0
   }
 
   measure: avg_rank_pct {
