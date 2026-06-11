@@ -2,32 +2,38 @@ include: "/raw_views/weld_training_madi_shap_3l48.view"
 
 view: +weld_training_madi_shap_3l48 {
 
+  dimension: id_weld {
+    label: "Weld ID"
+    type: string
+    sql: concat(${timer_name},"-",${spot_name}) ;;
+  }
+
   # ==========================================
   # SHAP VALUE METRICS
   # ==========================================
 
   measure: avg_shap_value {
     type: average
-    label: "Avg SHAP Value"
+    label: "Avg Shap Anomaly Value"
     description: "Average SHAP (anomaly) contribution value across all features and events. Positive values indicate a feature that pushes the score toward anomaly."
     sql: ${shap_anomaly} ;;
-    value_format_name: decimal_4
+    value_format_name: percent_2
   }
 
   measure: avg_abs_shap {
     type: average
-    label: "Avg |SHAP| (Absolute Contribution)"
+    label: "Avg Feature Contribution (Absolute)"
     description: "Average absolute SHAP value, representing the magnitude of feature contribution regardless of direction."
     sql: ${abs_shap} ;;
-    value_format_name: decimal_4
+    value_format_name: percent_2
   }
 
   measure: max_abs_shap {
     type: max
-    label: "Max |SHAP|"
+    label: "Max Feature Contribution"
     description: "Maximum absolute SHAP value in the selection, identifying the single most impactful feature contribution."
     sql: ${abs_shap} ;;
-    value_format_name: decimal_4
+    value_format_name: percent_2
   }
 
   measure: total_shap_records {
@@ -45,7 +51,7 @@ view: +weld_training_madi_shap_3l48 {
     label: "Avg Anomaly Score (SHAP)"
     description: "Average anomaly score associated with the SHAP records."
     sql: ${anomaly_score} ;;
-    value_format_name: decimal_4
+    value_format_name: percent_2
   }
 
   measure: avg_class_prob_shap {
@@ -106,7 +112,94 @@ view: +weld_training_madi_shap_3l48 {
     label: "Avg Feature Value"
     description: "Average raw value of the input feature associated with the SHAP contribution."
     sql: ${feature_value} ;;
-    value_format_name: decimal_4
+    value_format_name: percent_2
   }
+
+  measure: avg_uir_expulsion_time {
+    type: average
+    label: "Expulsion Time - Feature Contribution"
+    sql: ${abs_shap} ;;
+    value_format_name: percent_2
+    filters: [feature: "uirExpulsionTime"]
+  }
+
+  measure: avg_pct_delta_power{
+    type: average
+    label: "Delta Power - Feature Contribution"
+    sql: ${abs_shap} ;;
+    value_format_name: percent_2
+    filters: [feature: "pct_delta_power"]
+  }
+
+  measure: avg_pct_delta_current{
+    type: average
+    label:"Delta Current - Feature Contribution"
+    sql: ${abs_shap} ;;
+    value_format_name: percent_2
+    filters: [feature: "pct_delta_current"]
+  }
+
+  measure: avg_pct_delta_weld_time{
+    type: average
+    label: "Delta Weld Time - Feature Contribution"
+    sql: ${abs_shap} ;;
+    value_format_name: percent_2
+    filters: [feature: "pct_delta_weld_time"]
+  }
+
+  measure: avg_current_integral_early30{
+    type: average
+    label: "Early 30 ms Current Integral - Feature Contribution"
+    sql: ${abs_shap} ;;
+    value_format_name: percent_2
+    filters: [feature: "current_integral_early30"]
+  }
+
+  measure: avg_uir_expulsion_time_norm {
+    type: average
+    label: "Avg Expulsion Time (Normalized 0-100)"
+    description: "Normalized using global production baseline"
+    sql: ( ${feature_value} - ${weld_feature_bounds.global_min} ) /
+      NULLIF(${weld_feature_bounds.global_max} - ${weld_feature_bounds.global_min}, 0) * 100 ;;
+    value_format_name: decimal_1
+    filters: [feature: "uirExpulsionTime"]
+  }
+
+  measure: avg_pct_delta_power_norm {
+    type: average
+    label: "Delta Power (Normalized 0-100)"
+    sql: ( ${feature_value} - ${weld_feature_bounds.global_min} ) /
+      NULLIF(${weld_feature_bounds.global_max} - ${weld_feature_bounds.global_min}, 0) * 100 ;;
+    value_format_name: decimal_1
+    filters: [feature: "pct_delta_power"]
+  }
+
+  measure: avg_pct_delta_current_norm {
+    type: average
+    label: "Delta Current (Normalized 0-100)"
+    sql: ( ${feature_value} - ${weld_feature_bounds.global_min} ) /
+      NULLIF(${weld_feature_bounds.global_max} - ${weld_feature_bounds.global_min}, 0) * 100 ;;
+    value_format_name: decimal_1
+    filters: [feature: "pct_delta_current"]
+  }
+
+  measure: avg_pct_delta_weld_time_norm {
+    type: average
+    label: "Delta Weld Time (Normalized 0-100)"
+    sql: ( ${feature_value} - ${weld_feature_bounds.global_min} ) /
+      NULLIF(${weld_feature_bounds.global_max} - ${weld_feature_bounds.global_min}, 0) * 100 ;;
+    value_format_name: decimal_1
+    filters: [feature: "pct_delta_weld_time"]
+  }
+
+  measure: avg_current_integral_early30_norm {
+    type: average
+    label: "Early 30 ms Current Integral (Normalized 0-100)"
+    sql: ( ${feature_value} - ${weld_feature_bounds.global_min} ) /
+      NULLIF(${weld_feature_bounds.global_max} - ${weld_feature_bounds.global_min}, 0) * 100 ;;
+    value_format_name: decimal_1
+    filters: [feature: "current_integral_early30"]
+  }
+
 
 }

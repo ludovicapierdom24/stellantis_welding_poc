@@ -19,44 +19,45 @@ dimension: shift {
     html:
     <div style="background-color: #202c5c; color: #f8f9fa; padding: 30px; border-radius: 8px; font-family: 'Open Sans', Arial, sans-serif; line-height: 1.6; text-align: left; width: 100%; box-sizing: border-box; white-space: normal; overflow-wrap: break-word;">
 
-              <div style="position: relative; text-align: center; margin-bottom: 20px; min-height: 50px;">
-                  <h2 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: bold; line-height: 50px;">🤖 Predictive Spot Welding System</h2>
-                  <img src="https://www.stellantis.com/content/dam/stellantis-corporate/assets/stell-logo-white.svg" alt="Stellantis Logo" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); height: 45px;">
-              </div>
+    <!-- Header ottimizzato con Flexbox per evitare sovrapposizioni -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 20px;">
+        <h2 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: bold; line-height: 1.2;">🤖 Predictive Spot Welding System</h2>
+        <img src="https://www.stellantis.com/content/dam/stellantis-corporate/assets/stell-logo-white.svg" alt="Stellantis Logo" style="height: 40px; width: auto;">
+    </div>
 
-              <hr style="border-top: 1px solid #3b4886; border-bottom: none; margin: 20px 0;">
+    <hr style="border-top: 1px solid #3b4886; border-bottom: none; margin: 20px 0;">
 
-      <p style="font-size: 15px; margin-bottom: 15px;">Welcome to the predictive monitoring system for the spot welding process. This dashboard combines the analysis of high-frequency telemetric data (PLC) with advanced Artificial Intelligence models to reduce scrap rates and optimize maintenance.</p>
+    <p style="font-size: 15px; margin-bottom: 15px;">Welcome to the predictive monitoring system for the spot welding process. This dashboard combines the analysis of high-frequency telemetric data (PLC) with advanced Artificial Intelligence models to reduce scrap rates and optimize maintenance workflows.</p>
 
-      <h3 style="color: #4fc3f7; margin-top: 25px; margin-bottom: 10px; font-size: 18px;">🎯 Platform Objectives</h3>
-      <p style="font-size: 15px; margin-bottom: 10px;">This solution marks the transition from a reactive approach (downstream ultrasound inspections) to a <strong>predictive and proactive approach</strong>, allowing you to:</p>
-      <ul style="margin-bottom: 20px; font-size: 15px; padding-left: 40px;">
-      <li style="margin-bottom: 6px;"><strong>Intercept defects in real-time:</strong> Identifying anomalous welds (e.g., <em>spatter</em>, cold welds) before physical quality control occurs.</li>
-      <li style="margin-bottom: 6px;"><strong>Enhance process quality:</strong> Continuously monitoring the Defect Rate and identifying production bottlenecks to ensure standard compliance.</li>
-      <li style="margin-bottom: 6px;"><strong>Reduce diagnostic times (RCA):</strong> Leveraging AI to suggest the most effective in-line maintenance actions.</li>
-      </ul>
+    <h3 style="color: #4fc3f7; margin-top: 25px; margin-bottom: 10px; font-size: 18px;">🎯 Platform Objectives</h3>
+    <p style="font-size: 15px; margin-bottom: 10px;">This solution marks the transition from a reactive approach (downstream ultrasound inspections) to a <strong>predictive and proactive approach</strong>, allowing you to:</p>
+    <ul style="margin-bottom: 20px; font-size: 15px; padding-left: 40px;">
+        <li style="margin-bottom: 6px;"><strong>Intercept defects in real-time:</strong> Identifying anomalous welds (e.g., <em>spatter</em>, cold welds) before physical quality control occurs.</li>
+        <li style="margin-bottom: 6px;"><strong>Enhance process quality:</strong> Continuously monitoring the Defect Rate and identifying production bottlenecks to ensure standard compliance.</li>
+        <li style="margin-bottom: 6px;"><strong>Streamline prescriptive maintenance:</strong> Leveraging AI to instantly suggest the most effective in-line maintenance and corrective actions.</li>
+    </ul>
 
-      <h3 style="color: #4fc3f7; margin-top: 25px; margin-bottom: 10px; font-size: 18px;">🧠 How the Artificial Intelligence Works</h3>
-      <p style="font-size: 15px; margin-bottom: 10px;">The engine of this dashboard is powered by two integrated AI layers:</p>
-      <ol style="margin-bottom: 20px; font-size: 15px; padding-left: 40px;">
-      <li style="margin-bottom: 10px;"><strong>MADI (Multivariate Anomaly Detection with Interpretability):</strong> Unlike classic "Black-Box" algorithms, MADI does not just flag an anomaly by assigning a <em>Score</em>; it calculates the <strong>Feature Contributions</strong>. The system tells you exactly which physical parameter (Current, Force, Time, or Electrode Wear) triggered the defect.</li>
-      <li style="margin-bottom: 6px;"><strong>Gemini (Root Cause Analysis):</strong> Google's Generative AI processes the physical weights calculated by MADI and generates diagnostic recommendations in natural language, providing engineers with practical and contextualized troubleshooting steps.</li>
-      </ol>
+    <h3 style="color: #4fc3f7; margin-top: 25px; margin-bottom: 10px; font-size: 18px;">🧠 How the Artificial Intelligence Works</h3>
+    <p style="font-size: 15px; margin-bottom: 10px;">The engine of this dashboard is powered by two integrated AI layers:</p>
+    <ol style="margin-bottom: 20px; font-size: 15px; padding-left: 40px;">
+        <li style="margin-bottom: 10px;"><strong>MADI (Multivariate Anomaly Detection with Interpretability):</strong> Unlike classic "Black-Box" algorithms, MADI does not just flag an anomaly by assigning a <em>Score</em>; it calculates the <strong>Feature Contributions</strong>. The system tells you exactly which physical parameter (Current, Force, Time, or Electrode Wear) triggered the defect.</li>
+        <li style="margin-bottom: 6px;"><strong>Gemini (Prescriptive Insights Guide):</strong> Google's Generative AI processes the physical weights calculated by MADI and generates actionable maintenance recommendations in natural language, providing shopfloor engineers with practical, contextualized troubleshooting steps.</li>
+    </</ol>
 
-      <hr style="border-top: 1px solid #3b4886; border-bottom: none; margin: 25px 0;">
+    <hr style="border-top: 1px solid #3b4886; border-bottom: none; margin: 25px 0;">
 
-      <h3 style="color: #4fc3f7; margin-bottom: 10px; font-size: 18px;">🗺️ Navigation Guide</h3>
-      <p style="font-size: 15px; margin-bottom: 10px;">The dashboard is divided into two main views, optimized for different professional roles:</p>
-      <ul style="margin-bottom: 25px; font-size: 15px; padding-left: 40px;">
-      <li style="margin-bottom: 10px;">📊 <strong>01. Executive Summary (Plant Manager):</strong> A high-level overview of line performance. It includes production volumes, the actual defect rate, and the distribution of anomalies across shifts to quickly identify bottlenecks.</li>
-      <li style="margin-bottom: 6px;">🔬 <strong>02. RCA & Engineering (Process Engineers):</strong> A detailed diagnostic environment. It allows users to explore the physical attribution of anomalies, analyze resistance signature envelopes, and query the logs using Gemini's Root Cause Analysis.</li>
-      </ul>
+    <h3 style="color: #4fc3f7; margin-bottom: 10px; font-size: 18px;">🗺️ Navigation Guide</h3>
+    <p style="font-size: 15px; margin-bottom: 10px;">The dashboard is divided into two main views, optimized for different professional roles:</p>
+    <ul style="margin-bottom: 25px; font-size: 15px; padding-left: 40px;">
+        <li style="margin-bottom: 10px;">📊 <strong>01. Executive Summary (Plant Manager):</strong> A high-level overview of line performance. It includes production volumes, the actual defect rate, and the distribution of anomalies across shifts to quickly identify bottlenecks.</li>
+        <li style="margin-bottom: 6px;">🔬 <strong>02. Advanced Engineering & Diagnostics (Process Engineers):</strong> A detailed analytical environment. It allows users to explore the physical attribution of anomalies, analyze resistance signature envelopes, and query the data logs using Gemini's intelligent diagnostic assistant.</li>
+    </ul>
 
-      <div style="background-color: rgba(255, 255, 255, 0.08); padding: 15px 20px; border-left: 4px solid #4fc3f7; border-radius: 4px; font-size: 14px;">
-      <strong>💡 Operational Note:</strong> <em>The Anomaly Score ranges from positive values (compliant, healthy weld) to negative values (critical anomaly). Values close to zero indicate a progressive degradation of the process, which is extremely useful for planning preventive maintenance (e.g., Tip Dress).</em>
-      </div>
+    <div style="background-color: rgba(255, 255, 255, 0.08); padding: 15px 20px; border-left: 4px solid #4fc3f7; border-radius: 4px; font-size: 14px;">
+        <strong>💡 Operational Note:</strong> <em>The Anomaly Score ranges from positive values (compliant, healthy weld) to negative values (critical anomaly). Values close to zero indicate a progressive degradation of the process, which is extremely useful for planning preventive maintenance (e.g., Tip Dress).</em>
+    </div>
 
-      </div>
+</div>
       ;;
   }
 

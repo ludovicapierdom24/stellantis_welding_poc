@@ -47,6 +47,7 @@ view: weld_training_scores_madi_3l48 {
     sql: ${TABLE}.model_algorithm ;;
   }
   dimension: original_filename {
+    primary_key: yes
     type: string
     description: "PLC log filename; key to plc_logs and summary_weldlog."
     sql: ${TABLE}.original_filename ;;

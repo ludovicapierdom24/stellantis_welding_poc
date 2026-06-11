@@ -33,6 +33,10 @@ view: v_madi_kpi_dominant_3l48 {
     type: number
     sql: ${TABLE}.top_pct ;;
   }
+  dimension: rank_pct {
+    type: number
+    sql: ${TABLE}.rank_pct ;;
+  }
   measure: count {
     type: count
   }

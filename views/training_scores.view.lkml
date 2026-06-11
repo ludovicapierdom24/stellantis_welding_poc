@@ -11,7 +11,7 @@ view: +weld_training_scores_madi_3l48 {
     label: "Avg Anomaly Score"
     description: "Average MADI anomaly score across all scored welding events."
     sql: ${anomaly_score} ;;
-    value_format_name: decimal_4
+    value_format_name: percent_2
   }
 
   measure: max_anomaly_score {
@@ -19,7 +19,7 @@ view: +weld_training_scores_madi_3l48 {
     label: "Max Anomaly Score"
     description: "Maximum MADI anomaly score detected in the selected period."
     sql: ${anomaly_score} ;;
-    value_format_name: decimal_4
+    value_format_name: percent_2
   }
 
   measure: min_anomaly_score {
@@ -27,7 +27,7 @@ view: +weld_training_scores_madi_3l48 {
     label: "Min Anomaly Score"
     description: "Minimum MADI anomaly score detected in the selected period."
     sql: ${anomaly_score} ;;
-    value_format_name: decimal_4
+    value_format_name: percent_2
   }
 
   measure: average_class_prob {
