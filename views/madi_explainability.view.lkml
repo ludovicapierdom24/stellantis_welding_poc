@@ -112,7 +112,7 @@ view: +weld_training_madi_shap_3l48 {
     label: "Avg Feature Value"
     description: "Average raw value of the input feature associated with the SHAP contribution."
     sql: ${feature_value} ;;
-    value_format_name: percent_2
+    value_format_name: decimal_3
   }
 
   measure: avg_uir_expulsion_time {
