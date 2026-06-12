@@ -1,5 +1,5 @@
 view: weld_training_madi_shap_3l48 {
-  sql_table_name: `stellantis-molding-anomaly-det.molding_anomaly_poc.weld_training_madi_shap_3l48` ;;
+  sql_table_name: `stellantis-molding-anomaly-det.molding_anomaly_poc.weld_training_madi_shap_labeled_dominant_3l48` ;;
 
   dimension: abs_shap {
     type: number

@@ -1,5 +1,5 @@
 view: v_madi_kpi_dominant_3l48 {
-  sql_table_name: `stellantis-molding-anomaly-det.molding_anomaly_poc.v_madi_kpi_dominant_3l48` ;;
+  sql_table_name: `stellantis-molding-anomaly-det.molding_anomaly_poc.v_madi_kpi_labeled_dominant_3l48 ` ;;
 
   dimension: lift {
     type: number

@@ -1,5 +1,5 @@
 view: weld_training_scores_madi_3l48 {
-  sql_table_name: `stellantis-molding-anomaly-det.molding_anomaly_poc.weld_training_scores_madi_3l48` ;;
+  sql_table_name: `stellantis-molding-anomaly-det.molding_anomaly_poc.weld_training_scores_madi_labeled_dominant_3l48` ;;
 
   dimension: anomaly_score {
     type: number
