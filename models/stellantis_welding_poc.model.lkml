@@ -100,12 +100,6 @@ AND ${weld_training_scores_madi_3l48.time_stamp_raw} = ${weld_training_madi_shap
 relationship: one_to_many
 }
 
-join: weld_feature_bounds {
-  type: left_outer
-  sql_on: ${weld_training_madi_shap_3l48.feature} = ${weld_feature_bounds.feature} ;;
-  relationship: many_to_one
-}
-
 join: madi_feature_pivot {
   type: left_outer
   sql_on: ${weld_training_madi_shap_3l48.spot_name} = ${madi_feature_pivot.spot_name}
