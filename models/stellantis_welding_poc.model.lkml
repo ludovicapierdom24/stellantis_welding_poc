@@ -75,10 +75,10 @@ explore: welding_anomaly_poc {
     relationship: one_to_one
   }
 
-  sql_always_where:  ${message__weld_log__spot_name} is not null and ${message__weld_log__weld_time_actual_value} !=0;;
+  sql_always_where:  ${summary_weldlog.ultrasound} in ('Good', 'KO') and ${message__weld_log__spot_name} is not null and ${message__weld_log__weld_time_actual_value} !=0;;
 
 }
-#${summary_weldlog.ultrasound} in ('Good', 'KO') and
+#
 
 explore: stellantis_molding_anomaly_det
 {
@@ -94,7 +94,7 @@ sql_always_where: ${weld_training_scores_madi_3l48.is_dominant_stack}=TRUE ;;
 # ==========================================
 join: weld_training_madi_shap_3l48 {
 view_label: "MADI Feature Contribution"
-type: inner
+type: left_outer
 sql_on: ${weld_training_scores_madi_3l48.original_filename} = ${weld_training_madi_shap_3l48.original_filename}
 AND ${weld_training_scores_madi_3l48.time_stamp_raw} = ${weld_training_madi_shap_3l48.time_stamp_raw} ;;
 relationship: one_to_many
@@ -103,6 +103,13 @@ relationship: one_to_many
 join: weld_feature_bounds {
   type: left_outer
   sql_on: ${weld_training_madi_shap_3l48.feature} = ${weld_feature_bounds.feature} ;;
+  relationship: many_to_one
+}
+
+join: madi_feature_pivot {
+  type: left_outer
+  sql_on: ${weld_training_madi_shap_3l48.spot_name} = ${madi_feature_pivot.spot_name}
+    AND ${weld_training_madi_shap_3l48.timer_name} = ${madi_feature_pivot.timer_name} ;;
   relationship: many_to_one
 }
 
