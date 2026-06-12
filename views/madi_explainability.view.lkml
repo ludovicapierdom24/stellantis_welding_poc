@@ -82,26 +82,6 @@ view: +weld_training_madi_shap_3l48 {
     value_format_name: percent_2
   }
 
-  measure: count_top5pct_features {
-    type: count
-    label: "# Features in Top 5%"
-    description: "Count of feature-event records where the SHAP contribution is in the top 5% of all contributions."
-    filters: [in_top_5pct: "yes"]
-  }
-
-  measure: count_top10pct_features {
-    type: count
-    label: "# Features in Top 10%"
-    description: "Count of feature-event records where the SHAP contribution is in the top 10% of all contributions."
-    filters: [in_top_10pct: "yes"]
-  }
-
-  measure: count_top15pct_features {
-    type: count
-    label: "# Features in Top 15%"
-    description: "Count of feature-event records where the SHAP contribution is in the top 15% of all contributions."
-    filters: [in_top_15pct: "yes"]
-  }
 
   # ==========================================
   # FEATURE VALUE METRICS
