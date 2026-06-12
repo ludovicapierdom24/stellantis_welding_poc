@@ -53,20 +53,23 @@ view: madi_feature_pivot {
   }
 
   dimension: spot_name {
+    description: "Identificativo del punto di saldatura sul pezzo."
     type: string
-    label: "Spot Name"
+    label: "Nome Punto"
     sql: ${TABLE}.spot_name ;;
   }
 
   dimension: timer_name {
+    description: "Identificativo del robot/controllore (timer PLC) che ha eseguito la saldatura."
     type: string
     label: "Robot (Timer)"
     sql: ${TABLE}.timer_name ;;
   }
 
   dimension: ultrasound {
+    description: "Esito del controllo a ultrasuoni del punto di saldatura."
     type: string
-    label: "Ultrasound Result"
+    label: "Esito Ultrasuoni"
     sql: ${TABLE}.Ultrasound ;;
   }
 
@@ -76,23 +79,24 @@ view: madi_feature_pivot {
 
   measure: avg_anomaly_score {
     type: average
-    label: "Avg Anomaly Score"
-    description: "Higher = more anomalous."
+    label: "Punteggio Anomalia Medio"
+    description: "Più alto = più anomalo."
     value_format_name: decimal_3
     sql: ${TABLE}.avg_anomaly_score ;;
   }
 
   measure: avg_class_prob {
     type: average
-    label: "Avg Class Probability (Normal)"
-    description: "Lower = more anomalous."
+    label: "Probabilità Classe Media (Normale)"
+    description: "Più basso = più anomalo."
     value_format_name: decimal_3
     sql: ${TABLE}.avg_class_prob ;;
   }
 
   measure: total_welds {
+    description: "Numero totale di saldature aggregate nella selezione."
     type: sum
-    label: "Total Welds"
+    label: "Saldature Totali"
     sql: ${TABLE}.total_welds ;;
   }
 
@@ -102,88 +106,88 @@ view: madi_feature_pivot {
 
   measure: contrib_voltage_integral_early30 {
     type: average
-    label: "Contribution: Voltage Integral Early30"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Integrale Tensione Early30"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_voltage_integral_early30 ;;
   }
 
   measure: contrib_voltage_peak {
     type: average
-    label: "Contribution: Voltage Peak"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Picco di Tensione"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_voltage_peak ;;
   }
 
   measure: contrib_uir_expulsion_time {
     type: average
-    label: "Contribution: UIR Expulsion Time"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Tempo Espulsione UIR"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_uir_expulsion_time ;;
   }
 
   measure: contrib_pct_delta_voltage {
     type: average
-    label: "Contribution: Δ Voltage %"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Δ Tensione %"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_pct_delta_voltage ;;
   }
 
   measure: contrib_pct_delta_pulse_width {
     type: average
-    label: "Contribution: Δ Pulse Width %"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Δ Larghezza Impulso %"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_pct_delta_pulse_width ;;
   }
 
   measure: contrib_current_integral_early30 {
     type: average
-    label: "Contribution: Current Integral Early30"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Integrale Corrente Early30"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_current_integral_early30 ;;
   }
 
   measure: contrib_voltage_peak_early30 {
     type: average
-    label: "Contribution: Voltage Peak Early30"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Picco di Tensione Early30"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_voltage_peak_early30 ;;
   }
 
   measure: contrib_pct_delta_stabilisation_factor {
     type: average
-    label: "Contribution: Δ Stabilisation Factor %"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Δ Fattore di Stabilizzazione %"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_pct_delta_stabilisation_factor ;;
   }
 
   measure: contrib_pct_delta_current {
     type: average
-    label: "Contribution: Δ Current %"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Δ Corrente %"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_pct_delta_current ;;
   }
 
   measure: contrib_voltage_integral {
     type: average
-    label: "Contribution: Voltage Integral"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Integrale Tensione"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_voltage_integral ;;
   }
 
   measure: contrib_pct_delta_power {
     type: average
-    label: "Contribution: Δ Power %"
-    group_label: "Feature Contributions (SHAP)"
+    label: "Contributo: Δ Potenza %"
+    group_label: "Contributi Feature (SHAP)"
     value_format_name: percent_2
     sql: ${TABLE}.contrib_pct_delta_power ;;
   }
@@ -194,40 +198,40 @@ view: madi_feature_pivot {
 
   measure: val_voltage_integral_early30 {
     type: average
-    label: "Value: Voltage Integral Early30"
-    group_label: "Feature Values"
+    label: "Valore: Integrale Tensione Early30"
+    group_label: "Valori Feature"
     value_format_name: decimal_2
     sql: ${TABLE}.val_voltage_integral_early30 ;;
   }
 
   measure: val_voltage_peak {
     type: average
-    label: "Value: Voltage Peak"
-    group_label: "Feature Values"
+    label: "Valore: Picco di Tensione"
+    group_label: "Valori Feature"
     value_format_name: decimal_2
     sql: ${TABLE}.val_voltage_peak ;;
   }
 
   measure: val_uir_expulsion_time {
     type: average
-    label: "Value: UIR Expulsion Time"
-    group_label: "Feature Values"
+    label: "Valore: Tempo Espulsione UIR"
+    group_label: "Valori Feature"
     value_format_name: decimal_2
     sql: ${TABLE}.val_uir_expulsion_time ;;
   }
 
   measure: val_pct_delta_voltage {
     type: average
-    label: "Value: Δ Voltage %"
-    group_label: "Feature Values"
+    label: "Valore: Δ Tensione %"
+    group_label: "Valori Feature"
     value_format_name: decimal_2
     sql: ${TABLE}.val_pct_delta_voltage ;;
   }
 
   measure: val_pct_delta_pulse_width {
     type: average
-    label: "Value: Δ Pulse Width %"
-    group_label: "Feature Values"
+    label: "Valore: Δ Larghezza Impulso %"
+    group_label: "Valori Feature"
     value_format_name: decimal_2
     sql: ${TABLE}.val_pct_delta_pulse_width ;;
   }

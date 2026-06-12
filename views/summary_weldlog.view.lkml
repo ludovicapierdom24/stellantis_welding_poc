@@ -8,9 +8,9 @@ view: +summary_weldlog {
 
   dimension_group: date {
     type: time
-    group_label: "1. Identifiers & Meta"
-    label: "Weld"
-    description: "Exact date and time when the weld was performed."
+    group_label: "1. Identificativi & Metadati"
+    label: "Saldatura"
+    description: "Data e ora esatte in cui è stata eseguita la saldatura."
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
     datatype: date
@@ -19,36 +19,36 @@ view: +summary_weldlog {
   dimension: filename {
     primary_key: yes
     type: string
-    group_label: "1. Identifiers & Meta"
-    label: "Filename"
+    group_label: "1. Identificativi & Metadati"
+    label: "Nome File"
     sql: ${TABLE}.Filename ;;
   }
   dimension: spot_name {
     type: string
-    group_label: "1. Identifiers & Meta"
-    label: "Spot Name"
-    description: "Identifier of the specific weld spot on the part."
+    group_label: "1. Identificativi & Metadati"
+    label: "Nome Punto"
+    description: "Identificativo del punto di saldatura sul pezzo."
     sql: ${TABLE}.spotName ;;
   }
   dimension: timer_name {
     type: string
-    group_label: "1. Identifiers & Meta"
-    label: "Timer Name (PLC)"
-    description: "Unique identifier of the welding controller (PLC)."
+    group_label: "1. Identificativi & Metadati"
+    label: "Timer (PLC)"
+    description: "Identificativo univoco del controllore di saldatura (PLC)."
     sql: ${TABLE}.timerName ;;
   }
   dimension: prog_no {
     type: number
-    group_label: "1. Identifiers & Meta"
-    label: "Program Number"
-    description: "Number of the welding program used, defining target parameters."
+    group_label: "1. Identificativi & Metadati"
+    label: "Numero Programma"
+    description: "Numero del programma di saldatura utilizzato, che definisce i parametri target."
     sql: ${TABLE}.progNo ;;
   }
   dimension: electrode_no {
     type: number
-    group_label: "1. Identifiers & Meta"
-    label: "Electrode Number"
-    description: "Number of the electrode used."
+    group_label: "1. Identificativi & Metadati"
+    label: "Numero Elettrodo"
+    description: "Numero dell'elettrodo utilizzato."
     sql: ${TABLE}.electrodeNo ;;
   }
 
@@ -58,67 +58,67 @@ view: +summary_weldlog {
 
   dimension: current_actual_value {
     type: number
-    group_label: "2. Electrical Parameters"
-    label: "Current Actual Value (kA)"
-    description: "Actual average value of the welding current (in kA)."
+    group_label: "2. Parametri Elettrici"
+    label: "Corrente Effettiva (kA)"
+    description: "Valore medio effettivo della corrente di saldatura (in kA)."
     sql: ${TABLE}.currentActualValue ;;
   }
   dimension: energy_actual_value {
     type: number
-    group_label: "2. Electrical Parameters"
-    label: "Energy Actual Value (Ws)"
-    description: "Total energy actually delivered during the weld (in Ws)."
+    group_label: "2. Parametri Elettrici"
+    label: "Energia Effettiva (Ws)"
+    description: "Valore effettivo dell'energia erogata durante la saldatura (in Ws)."
     sql: ${TABLE}.energyActualValue ;;
   }
   dimension: energy_ref_value {
     type: number
-    group_label: "2. Electrical Parameters"
-    label: "Energy Ref Value"
-    description: "Reference energy set in the program."
+    group_label: "2. Parametri Elettrici"
+    label: "Energia di Riferimento"
+    description: "Valore di riferimento (target) dell'energia di saldatura."
     sql: ${TABLE}.energyRefValue ;;
   }
   dimension: resistance_actual_value {
     type: number
-    group_label: "2. Electrical Parameters"
-    label: "Resistance Actual Value (µΩ)"
-    description: "Electrical resistance value measured at the end of the process (in µΩ)."
+    group_label: "2. Parametri Elettrici"
+    label: "Resistenza Effettiva (µΩ)"
+    description: "Valore effettivo della resistenza misurata durante la saldatura (in µΩ)."
     sql: ${TABLE}.resistanceActualValue ;;
   }
   dimension: resistance_ref_value {
     type: number
-    group_label: "2. Electrical Parameters"
-    label: "Resistance Ref Value"
-    description: "Expected reference resistance value."
+    group_label: "2. Parametri Elettrici"
+    label: "Resistenza di Riferimento"
+    description: "Valore di riferimento (target) della resistenza."
     sql: ${TABLE}.resistanceRefValue ;;
   }
   dimension: uip_actual_value {
     type: number
-    group_label: "2. Electrical Parameters"
-    label: "UIP Actual Value"
+    group_label: "2. Parametri Elettrici"
+    label: "Valore Effettivo UIP"
     sql: ${TABLE}.uipActualValue ;;
   }
   dimension: r_end {
     type: number
-    group_label: "2. Electrical Parameters"
-    label: "Resistance End (R_end)"
+    group_label: "2. Parametri Elettrici"
+    label: "Resistenza Finale (R_end)"
     sql: ${TABLE}.R_end ;;
   }
   dimension: r_max {
     type: number
-    group_label: "2. Electrical Parameters"
-    label: "Resistance Max (R_max)"
+    group_label: "2. Parametri Elettrici"
+    label: "Resistenza Massima (R_max)"
     sql: ${TABLE}.R_max ;;
   }
   dimension: rexp {
     type: number
-    group_label: "2. Electrical Parameters"
-    label: "Resistance Expulsion (Rexp)"
+    group_label: "2. Parametri Elettrici"
+    label: "Resistenza all'Espulsione (Rexp)"
     sql: ${TABLE}.Rexp ;;
   }
   dimension: rmax_after_exp {
     type: number
-    group_label: "2. Electrical Parameters"
-    label: "R_max After Expulsion"
+    group_label: "2. Parametri Elettrici"
+    label: "R_max Dopo Espulsione"
     sql: ${TABLE}.Rmax_after_exp ;;
   }
 
@@ -128,58 +128,58 @@ view: +summary_weldlog {
 
   dimension: weld_time_actual_value {
     type: number
-    group_label: "3. Time Parameters"
-    label: "Weld Time Actual (ms)"
-    description: "Actual welding time (in milliseconds)."
+    group_label: "3. Parametri di Tempo"
+    label: "Tempo di Saldatura Effettivo (ms)"
+    description: "Durata effettiva della saldatura (in ms)."
     sql: ${TABLE}.weldTimeActualValue ;;
   }
   dimension: weld_time_ref_value {
     type: number
-    group_label: "3. Time Parameters"
-    label: "Weld Time Ref"
-    description: "Reference welding time set in the program."
+    group_label: "3. Parametri di Tempo"
+    label: "Tempo di Saldatura di Riferimento"
+    description: "Durata di riferimento (target) della saldatura."
     sql: ${TABLE}.weldTimeRefValue ;;
   }
   dimension: time_pre_pulse {
     type: number
-    group_label: "3. Time Parameters"
-    label: "Time Pre-Pulse"
+    group_label: "3. Parametri di Tempo"
+    label: "Tempo Pre-Impulso"
     sql: ${TABLE}.TimePrePulse ;;
   }
   dimension: time_rmax {
     type: number
-    group_label: "3. Time Parameters"
-    label: "Time R_max"
+    group_label: "3. Parametri di Tempo"
+    label: "Tempo R_max"
     sql: ${TABLE}.TimeRmax ;;
   }
   dimension: time_rmax_after_exp {
     type: number
-    group_label: "3. Time Parameters"
-    label: "Time R_max After Expulsion"
+    group_label: "3. Parametri di Tempo"
+    label: "Tempo R_max Dopo Espulsione"
     sql: ${TABLE}.Time_Rmax_after_exp ;;
   }
   dimension: time_exp_after_time_rmax {
     type: number
-    group_label: "3. Time Parameters"
-    label: "Time Exp. After Time R_max"
+    group_label: "3. Parametri di Tempo"
+    label: "Tempo Esp. Dopo Tempo R_max"
     sql: ${TABLE}.Time_exp_after_Time_Rmax ;;
   }
   dimension: time_rmax_after_pause {
     type: number
-    group_label: "3. Time Parameters"
-    label: "Time R_max After Pause"
+    group_label: "3. Parametri di Tempo"
+    label: "Tempo R_max Dopo Pausa"
     sql: ${TABLE}.TimeRmax_after_pause ;;
   }
   dimension: uir_expulsion_time {
     type: number
-    group_label: "3. Time Parameters"
-    label: "UIR Expulsion Time"
+    group_label: "3. Parametri di Tempo"
+    label: "Tempo di Espulsione UIR"
     sql: ${TABLE}.uirExpulsionTime ;;
   }
   dimension: pause {
     type: number
-    group_label: "3. Time Parameters"
-    label: "Pause Time"
+    group_label: "3. Parametri di Tempo"
+    label: "Tempo di Pausa"
     sql: ${TABLE}.Pause ;;
   }
 
@@ -189,16 +189,16 @@ view: +summary_weldlog {
 
   dimension: wear {
     type: number
-    group_label: "4. Equipment & Wear"
-    label: "Electrode Wear"
-    description: "Estimated electrode wear, expressed as an absolute value or percentage."
+    group_label: "4. Attrezzatura & Usura"
+    label: "Usura Elettrodo"
+    description: "Usura accumulata dell'elettrodo."
     sql: ${TABLE}.wear ;;
   }
   dimension: tip_dress_counter {
     type: number
-    group_label: "4. Equipment & Wear"
-    label: "Tip Dress Counter"
-    description: "Counter for the number of tip dressings performed on the electrode."
+    group_label: "4. Attrezzatura & Usura"
+    label: "Contatore Ravvivatura Punta"
+    description: "Contatore delle ravvivature della punta dell'elettrodo."
     sql: ${TABLE}.tipDressCounter ;;
   }
 
@@ -208,32 +208,32 @@ view: +summary_weldlog {
 
   dimension: ultrasound {
     type: string
-    group_label: "5. Quality & Ultrasound"
-    label: "Ultrasound Result"
+    group_label: "5. Qualità & Ultrasuoni"
+    label: "Esito Ultrasuoni"
     sql: ${TABLE}.Ultrasound ;;
   }
   dimension: note_ultrasound {
     type: string
-    group_label: "5. Quality & Ultrasound"
-    label: "Ultrasound Notes"
+    group_label: "5. Qualità & Ultrasuoni"
+    label: "Note Ultrasuoni"
     sql: ${TABLE}.Note_ultrasound ;;
   }
   dimension: weld_time_error {
     type: string
-    group_label: "5. Quality & Ultrasound"
-    label: "Weld Time Error"
+    group_label: "5. Qualità & Ultrasuoni"
+    label: "Errore Tempo di Saldatura"
     sql: ${TABLE}.WeldTimeError ;;
   }
   dimension: d_value_vs_curves {
     type: string
-    group_label: "5. Quality & Ultrasound"
-    label: "D Value vs Curves"
+    group_label: "5. Qualità & Ultrasuoni"
+    label: "Valore D vs Curve"
     sql: ${TABLE}.D_value_vs_curves ;;
   }
   dimension: qty_in_curves {
     type: number
-    group_label: "5. Quality & Ultrasound"
-    label: "Qty in Curves"
+    group_label: "5. Qualità & Ultrasuoni"
+    label: "Quantità nelle Curve"
     sql: ${TABLE}.Qty_in_curves ;;
   }
 
@@ -243,26 +243,26 @@ view: +summary_weldlog {
 
   dimension: thickness {
     type: string
-    group_label: "6. Part Details & Misc"
-    label: "Thickness"
+    group_label: "6. Dettagli Pezzo & Varie"
+    label: "Spessore"
     sql: ${TABLE}.Thickness ;;
   }
   dimension: stabilisation_factor_act_value {
     type: number
-    group_label: "6. Part Details & Misc"
-    label: "Stabilisation Factor Act. Value"
+    group_label: "6. Dettagli Pezzo & Varie"
+    label: "Fattore di Stabilizzazione (Eff.)"
     sql: ${TABLE}.stabilisationFactorActValue ;;
   }
   dimension: weld_spot_cust_data_p16_1 {
     type: number
-    group_label: "6. Part Details & Misc"
-    label: "Cust Data P16 1"
+    group_label: "6. Dettagli Pezzo & Varie"
+    label: "Dati Cliente P16 1"
     sql: ${TABLE}.weldSpotCustDataP16_1 ;;
   }
   dimension: weld_spot_cust_data_p16_2 {
     type: number
-    group_label: "6. Part Details & Misc"
-    label: "Cust Data P16 2"
+    group_label: "6. Dettagli Pezzo & Varie"
+    label: "Dati Cliente P16 2"
     sql: ${TABLE}.weldSpotCustDataP16_2 ;;
   }
 
@@ -272,8 +272,8 @@ view: +summary_weldlog {
 
   measure: count {
     type: count
-    label: "Weld Count"
-    description: "Total number of weld records."
+    label: "Conteggio Saldature"
+    description: "Numero di eventi di saldatura nella selezione."
     drill_fields: [timer_name, filename, spot_name]
   }
 
@@ -283,31 +283,31 @@ view: +summary_weldlog {
 
   measure: total_welds {
     type: count_distinct
-    label: "Total Analyzed Welds"
-    description: "Total count of welds."
+    label: "Saldature Totali Analizzate"
+    description: "Numero totale di saldature analizzate."
     sql: ${filename} ;;
   }
 
   measure: count_ko {
     type: count_distinct
-    label: "KO Welds (Defects)"
-    description: "Number of welds with Ultrasound result = KO."
+    label: "Saldature KO (Difetti)"
+    description: "Numero di saldature classificate come KO (difettose)."
     filters: [ultrasound: "KO"]
     sql: ${filename} ;;
   }
 
   measure: count_good {
     type: count_distinct
-    label: "Good Welds"
-    description: "Number of welds with Ultrasound result = Good."
+    label: "Saldature Buone"
+    description: "Numero di saldature classificate come buone (conformi)."
     filters: [ultrasound: "Good"]
     sql: ${filename} ;;
   }
 
   measure: defect_rate {
     type: number
-    label: "Defect Rate %"
-    description: "Percentage of defective welds (KO) out of the total."
+    label: "Tasso di Difettosità %"
+    description: "Percentuale di saldature difettose (KO) sul totale analizzato."
     value_format_name: percent_2
     # Multiply by 1.0 to force decimal division and avoid div/0 error with NULLIF
     sql: 1.0 * ${count_ko} / NULLIF(${total_welds}, 0) ;;
@@ -326,8 +326,8 @@ view: +summary_weldlog {
 
   dimension: anomaly_score {
     type: number
-    label: "Anomaly Score"
-    description: "Mockup based on Ultrasound result: Negative score for KO, positive for Good."
+    label: "Punteggio Anomalia"
+    description: "Punteggio di anomalia assegnato alla saldatura; valori più alti indicano maggiore anomalia."
     value_format_name: decimal_2
     sql:
       CASE
@@ -341,8 +341,8 @@ view: +summary_weldlog {
 
   measure: count_ai_anomalies {
     type: count
-    label: "Detected Anomalies (IF)"
-    description: "Number of welds classified as anomalous by the AI model (Anomaly Score < 0)."
+    label: "Anomalie Rilevate (IF)"
+    description: "Numero di anomalie rilevate dal modello (Isolation Forest)."
 
     # This filter only counts rows where the score is negative
     filters: [anomaly_score: "< 0"]
@@ -355,8 +355,9 @@ view: +summary_weldlog {
 
 
   measure: total_labeled_curves {
+    label: "Curve Etichettate Totali"
     type: number
-    description: "Total labeled curves (Good + KO) for this type"
+    description: "Numero totale di curve etichettate disponibili per l'analisi."
     sql: ${count_good} + ${count_ko} ;;
   }
 
@@ -365,8 +366,9 @@ view: +summary_weldlog {
   # ==========================================
 
   measure: is_analysis_feasible {
+    label: "Analisi Fattibile"
     type: string
-    description: "Returns 'Yes' if there are enough samples, otherwise 'No'"
+    description: "Indica se l'analisi è fattibile in base al numero minimo di curve etichettate."
     # Uses SQL LEAST instead of Python min(). Uses dynamically injected parameter.
     sql: CASE
           WHEN LEAST(${count_good}, ${count_ko}) >= ({% parameter spot_sheet_details.min_labeled_curves %} / 2)
@@ -378,9 +380,10 @@ view: +summary_weldlog {
 
   # Hidden boolean measure: equivalent to "if ... continue" in your charts for loop
   measure: is_feasible_boolean {
+    label: "Fattibilità (Sì/No)"
     type: yesno
     hidden: no
-    description: "True if the type has passed the minimum sampling requirements"
+    description: "Flag booleano che indica la fattibilità dell'analisi (Sì/No)."
     sql: LEAST(${count_good}, ${count_ko}) >= ({% parameter spot_sheet_details.min_labeled_curves %} / 2)
       AND (${total_labeled_curves}) >= {% parameter spot_sheet_details.min_labeled_curves %} ;;
   }
